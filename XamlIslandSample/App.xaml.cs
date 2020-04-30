@@ -57,6 +57,7 @@ namespace XamlIslandSample
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddTransient<IXamlHostService, XamlHostService>();
 
             // Views and ViewModels
             services.AddTransient<IShellWindow, ShellWindow>();

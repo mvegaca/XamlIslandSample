@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using System.Windows.Media;
 using MahApps.Metro;
 
 using Microsoft.Win32;
@@ -66,6 +66,14 @@ namespace XamlIslandSample.Services
             {
                 SetTheme();
             }
+        }
+
+        public AppColors GetAppColors()
+        {
+            var colors = new AppColors();
+            colors.BackgroundColor = Application.Current.FindResource("MahApps.Brushes.Control.Background") as SolidColorBrush;
+            colors.TextColor = Application.Current.FindResource("MahApps.Brushes.Text") as SolidColorBrush;
+            return colors;
         }
     }
 }

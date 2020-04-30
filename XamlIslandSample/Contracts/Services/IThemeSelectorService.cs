@@ -7,5 +7,7 @@ namespace XamlIslandSample.Contracts.Services
         bool SetTheme(AppTheme? theme = null);
 
         AppTheme GetCurrentTheme();
+
+        AppColors GetAppColors();
     }
 }
