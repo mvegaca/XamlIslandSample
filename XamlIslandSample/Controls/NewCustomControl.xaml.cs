@@ -27,10 +27,10 @@ namespace XamlIslandSample.Controls
 
         private void OnChildChanged(object sender, EventArgs e)
         {
-            if (sender is WindowsXamlHost host && host.GetUwpInternalObject() is WUX.FrameworkElement element)
+            if (sender is WindowsXamlHost host && host.GetUwpInternalObject() is XamlIslandUserControl xamlIsland)
             {
-                BindCommonProperties(element);
-                element.SetBinding(CustomControlUniversal.TextProperty, new WUXD.Binding() { Path = new WUX.PropertyPath(nameof(Text)), Mode = WUXD.BindingMode.TwoWay });
+                BindCommonProperties(xamlIsland);
+                xamlIsland.SetBinding(CustomControlUniversal.TextProperty, new WUXD.Binding() { Path = new WUX.PropertyPath(nameof(Text)), Mode = WUXD.BindingMode.TwoWay });
             }
         }
     }

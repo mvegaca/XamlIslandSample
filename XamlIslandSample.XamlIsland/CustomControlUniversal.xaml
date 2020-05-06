@@ -9,11 +9,17 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid Background="{x:Bind BackgroundColor, Mode=OneWay}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock TextWrapping="Wrap">
+            <Run FontWeight="Bold">UWP Xaml Island</Run>
+            <LineBreak />
+            <Run>This TextBox is bound to the Data property in WPF Page's ViewModel.</Run>
+        </TextBlock>
         <TextBox
-            Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            Foreground="{x:Bind TextColor, Mode=OneWay}"
-            Background="{x:Bind BackgroundColor, Mode=OneWay}"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center" />
+            Grid.Row="1"            
+            Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </local:XamlIslandUserControl>

@@ -1,13 +1,17 @@
-﻿using XamlIslandSample.Models;
+﻿using System;
+using System.Windows.Media;
+using XamlIslandSample.Models;
 
 namespace XamlIslandSample.Contracts.Services
 {
     public interface IThemeSelectorService
     {
+        event EventHandler ThemeChanged;
+
         bool SetTheme(AppTheme? theme = null);
 
         AppTheme GetCurrentTheme();
 
-        AppColors GetAppColors();
+        SolidColorBrush GetColor(string colorKey);
     }
 }

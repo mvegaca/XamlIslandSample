@@ -15,6 +15,8 @@ namespace XamlIslandSample.Services
         private bool IsHighContrastActive
                         => SystemParameters.HighContrast;
 
+        public event EventHandler ThemeChanged;
+
         public ThemeSelectorService()
         {
             SystemEvents.UserPreferenceChanging += OnUserPreferenceChanging;
@@ -46,6 +48,7 @@ namespace XamlIslandSample.Services
             {
                 ThemeManager.ChangeTheme(Application.Current, $"{theme}.Blue");
                 App.Current.Properties["Theme"] = theme.ToString();
+                ThemeChanged?.Invoke(this, EventArgs.Empty);
                 return true;
             }
 
@@ -59,6 +62,9 @@ namespace XamlIslandSample.Services
             return theme;
         }
 
+        public SolidColorBrush GetColor(string colorKey)
+            => Application.Current.FindResource(colorKey) as SolidColorBrush;
+
         private void OnUserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
         {
             if (e.Category == UserPreferenceCategory.Color ||
@@ -66,14 +72,6 @@ namespace XamlIslandSample.Services
             {
                 SetTheme();
             }
-        }
-
-        public AppColors GetAppColors()
-        {
-            var colors = new AppColors();
-            colors.BackgroundColor = Application.Current.FindResource("MahApps.Brushes.Control.Background") as SolidColorBrush;
-            colors.TextColor = Application.Current.FindResource("MahApps.Brushes.Text") as SolidColorBrush;
-            return colors;
         }
     }
 }

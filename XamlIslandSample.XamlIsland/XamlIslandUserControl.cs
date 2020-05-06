@@ -6,19 +6,28 @@ namespace XamlIslandSample.XamlIsland
 {
     public class XamlIslandUserControl : UserControl
     {
-        public static readonly DependencyProperty BackgroundColorProperty = DependencyProperty.Register(nameof(BackgroundColor), typeof(Brush), typeof(XamlIslandUserControl), new PropertyMetadata(null));
-        public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(nameof(TextColor), typeof(Brush), typeof(XamlIslandUserControl), new PropertyMetadata(null));
-
         public Brush BackgroundColor
         {
             get { return (Brush)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
-        }        
+        }
 
-        public Brush TextColor
+        public bool UseDarkTheme
         {
-            get { return (Brush)GetValue(TextColorProperty); }
-            set { SetValue(TextColorProperty, value); }
+            get { return (bool)GetValue(UseDarkThemeProperty); }
+            set { SetValue(UseDarkThemeProperty, value); }
+        }
+
+        public static readonly DependencyProperty BackgroundColorProperty = DependencyProperty.Register(nameof(BackgroundColor), typeof(Brush), typeof(XamlIslandUserControl), new PropertyMetadata(null, (d, e) => { }));
+
+        public static readonly DependencyProperty UseDarkThemeProperty = DependencyProperty.Register(nameof(UseDarkTheme), typeof(bool), typeof(XamlIslandUserControl), new PropertyMetadata(false, OnUseDarkThemePropertyChanged));
+
+        private static void OnUseDarkThemePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is XamlIslandUserControl control && e.NewValue is bool useDarkTheme)
+            {
+                control.RequestedTheme = useDarkTheme ? ElementTheme.Dark : ElementTheme.Light;
+            }
         }
     }
 }

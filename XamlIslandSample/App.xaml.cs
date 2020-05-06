@@ -21,7 +21,7 @@ namespace XamlIslandSample
     // For more inforation about application lifecyle events see https://docs.microsoft.com/dotnet/framework/wpf/app-development/application-management-overview
     public partial class App : Application
     {
-        private IHost _host;
+        public IHost ApplicationHost { get; private set; }
 
         public App()
         {
@@ -32,12 +32,12 @@ namespace XamlIslandSample
             var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
             // For more information about .NET generic host see  https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
-            _host = Host.CreateDefaultBuilder(e.Args)
+            ApplicationHost = Host.CreateDefaultBuilder(e.Args)
                     .ConfigureAppConfiguration(c => c.SetBasePath(appLocation))
                     .ConfigureServices(ConfigureServices)
                     .Build();
 
-            await _host.StartAsync();
+            await ApplicationHost.StartAsync();
         }
 
         private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
@@ -57,7 +57,6 @@ namespace XamlIslandSample
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
-            services.AddTransient<IXamlHostService, XamlHostService>();
 
             // Views and ViewModels
             services.AddTransient<IShellWindow, ShellWindow>();
@@ -75,9 +74,9 @@ namespace XamlIslandSample
 
         private async void OnExit(object sender, ExitEventArgs e)
         {
-            await _host.StopAsync();
-            _host.Dispose();
-            _host = null;
+            await ApplicationHost.StopAsync();
+            ApplicationHost.Dispose();
+            ApplicationHost = null;
         }
 
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

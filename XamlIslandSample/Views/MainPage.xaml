@@ -18,12 +18,30 @@
             Style="{StaticResource PageTitleStyle}"
             Margin="{StaticResource MediumLeftMargin}"
             Text="{x:Static properties:Resources.MainPageTitle}" />
-        <StackPanel Grid.Row="1" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid Grid.Row="1" Margin="{StaticResource MediumLeftRightMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <controls:NewCustomControl
-                Text="{Binding Text, Mode=TwoWay}"
-                AppColors="{Binding AppColors, Mode=OneWay}" />
-            <TextBlock Margin="{StaticResource SmallTopMargin}" Text="WPF ViewModel Property" />
-            <TextBox Margin="{StaticResource SmallTopMargin}" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
+                Grid.Column="0"
+                Margin="{StaticResource SmallRightMargin}"
+                Text="{Binding Data, Mode=TwoWay}" />
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource BodyTextStyle}">
+                    <Run FontWeight="Bold">WPF Xaml</Run>
+                    <LineBreak />
+                    <Run>This TextBox is bound to the Data property in ViewModel.</Run>
+                </TextBlock>
+                <TextBox
+                    Grid.Row="1"
+                    Text="{Binding Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

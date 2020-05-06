@@ -1,28 +1,49 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
-using XamlIslandSample.Converters;
+using Microsoft.Extensions.Hosting;
+using XamlIslandSample.Contracts.Services;
 using XamlIslandSample.Models;
 using XamlIslandSample.XamlIsland;
-using WUX = Windows.UI.Xaml;
-using WUXD = Windows.UI.Xaml.Data;
 
 namespace XamlIslandSample.Controls
 {
     public class XamlHostUserControl : UserControl
     {
-        public static readonly DependencyProperty AppColorsProperty = DependencyProperty.Register(nameof(AppColors), typeof(AppColors), typeof(XamlHostUserControl), new PropertyMetadata(null));        
+        private XamlIslandUserControl _xamlIsland;
+        private readonly IThemeSelectorService _themeSelectorService;
+        private IHost _host => ((App)App.Current).ApplicationHost;
+        private bool _useDarkTheme;
+        private SolidColorBrush _backgroundColor;
 
-        public AppColors AppColors
+        public XamlHostUserControl()
         {
-            get { return (AppColors)GetValue(AppColorsProperty); }
-            set { SetValue(AppColorsProperty, value); }
+            _themeSelectorService = _host.Services.GetService(typeof(IThemeSelectorService)) as IThemeSelectorService;
+            _themeSelectorService.ThemeChanged += OnThemeChanged;
+            GetColors();
         }
 
-        protected void BindCommonProperties(WUX.FrameworkElement element)
+        private void OnThemeChanged(object sender, System.EventArgs e)
         {
-            element.SetBinding(XamlIslandUserControl.BackgroundColorProperty, new WUXD.Binding() { Path = new WUX.PropertyPath("AppColors.BackgroundColor"), Converter = new UwpColorConverter() });
-            element.SetBinding(XamlIslandUserControl.TextColorProperty, new WUXD.Binding() { Path = new WUX.PropertyPath("AppColors.TextColor"), Converter = new UwpColorConverter() });
+            GetColors();
+            ApplyColors();
+        }
+
+        protected void BindCommonProperties(XamlIslandUserControl xamlIsland)
+        {
+            _xamlIsland = xamlIsland;
+            ApplyColors();
+        }
+
+        private void GetColors()
+        {
+            _backgroundColor = _themeSelectorService.GetColor("MahApps.Brushes.Control.Background");
+            _useDarkTheme = _themeSelectorService.GetCurrentTheme() == AppTheme.Dark;
+        }
+
+        private void ApplyColors()
+        {
+            _xamlIsland.BackgroundColor = Converters.ColorConverter.FromSystemColor(_backgroundColor);
+            _xamlIsland.UseDarkTheme = _useDarkTheme;
         }
     }
 }
