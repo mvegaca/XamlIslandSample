@@ -124,7 +124,6 @@
       <DependentUpon>CustomControlUniversal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XamlIslandUserControl.cs" />
     <EmbeddedResource Include="Properties\SampleApp.XamlIsland.rd.xml" />
   </ItemGroup>
   <ItemGroup>

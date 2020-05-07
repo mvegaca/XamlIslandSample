@@ -2,7 +2,7 @@
 
 namespace SampleApp.ViewModels
 {
-    public class MainViewModel : Observable
+    public class XamlIslandViewModel : Observable
     {
         private string _text;
 
@@ -12,7 +12,7 @@ namespace SampleApp.ViewModels
             set { Set(ref _text, value); }
         }
 
-        public MainViewModel()
+        public XamlIslandViewModel()
         {
         }
     }

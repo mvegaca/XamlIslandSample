@@ -27,11 +27,11 @@
     <data name="SettingsPageRadioButtonLightTheme" xml:space="preserve">
         <value>Light</value>
     </data>
-    <data name="ShellMainPage" xml:space="preserve">
-		    <value>Main</value>
+    <data name="ShellXamlIslandPage" xml:space="preserve">
+		    <value>XamlIsland</value>
     </data>
-    <data name="MainPageTitle" xml:space="preserve">
-		    <value>Main</value>
+    <data name="XamlIslandPageTitle" xml:space="preserve">
+		    <value>XamlIsland</value>
     </data>
 
 	<!--

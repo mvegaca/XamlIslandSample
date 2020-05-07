@@ -18,7 +18,7 @@ namespace SampleApp.Services
         public PageService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            Configure<MainViewModel, MainPage>();
+            Configure<XamlIslandViewModel, XamlIslandPage>();
             Configure<SettingsViewModel, SettingsPage>();
         }
 

@@ -3,9 +3,9 @@ using SampleApp.ViewModels;
 
 namespace SampleApp.Views
 {
-    public partial class MainPage : Page
+    public partial class XamlIslandPage : Page
     {
-        public MainPage(MainViewModel viewModel)
+        public XamlIslandPage(XamlIslandViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;

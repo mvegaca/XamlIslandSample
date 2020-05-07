@@ -10,7 +10,8 @@
 
 namespace SampleApp.Properties {
     using System;
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,15 +23,15 @@ namespace SampleApp.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
-
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -44,7 +45,7 @@ namespace SampleApp.Properties {
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -58,97 +59,79 @@ namespace SampleApp.Properties {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to wts.ItemName.
+        ///   Looks up a localized string similar to SampleApp.
         /// </summary>
         public static string AppDisplayName {
             get {
                 return ResourceManager.GetString("AppDisplayName", resourceCulture);
             }
         }
-    
+        
         /// <summary>
-        ///   Looks up a localized string similar to Main.
+        ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
         /// </summary>
-        public static string MainPageTitle {
+        public static string SettingsPageAboutText {
             get {
-                return ResourceManager.GetString("MainPageTitle", resourceCulture);
+                return ResourceManager.GetString("SettingsPageAboutText", resourceCulture);
             }
         }
-    
+        
         /// <summary>
-        ///   Looks up a localized string similar to Main.
+        ///   Looks up a localized string similar to About this application.
         /// </summary>
-        public static string ShellMainPage {
+        public static string SettingsPageAboutTitle {
             get {
-                return ResourceManager.GetString("ShellMainPage", resourceCulture);
+                return ResourceManager.GetString("SettingsPageAboutTitle", resourceCulture);
             }
         }
-    
+        
         /// <summary>
-            ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
-            /// </summary>
-            public static string SettingsPageAboutText {
-                get {
-                    return ResourceManager.GetString("SettingsPageAboutText", resourceCulture);
-                }
+        ///   Looks up a localized string similar to Choose Theme.
+        /// </summary>
+        public static string SettingsPageChooseThemeText {
+            get {
+                return ResourceManager.GetString("SettingsPageChooseThemeText", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to About this application.
-            /// </summary>
-            public static string SettingsPageAboutTitle {
-                get {
-                    return ResourceManager.GetString("SettingsPageAboutTitle", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personalization.
+        /// </summary>
+        public static string SettingsPagePersonalizationTitle {
+            get {
+                return ResourceManager.GetString("SettingsPagePersonalizationTitle", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Choose Theme.
-            /// </summary>
-            public static string SettingsPageChooseThemeText {
-                get {
-                    return ResourceManager.GetString("SettingsPageChooseThemeText", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Statement.
+        /// </summary>
+        public static string SettingsPagePrivacyStatementText {
+            get {
+                return ResourceManager.GetString("SettingsPagePrivacyStatementText", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Personalization.
-            /// </summary>
-            public static string SettingsPagePersonalizationTitle {
-                get {
-                    return ResourceManager.GetString("SettingsPagePersonalizationTitle", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string SettingsPageRadioButtonDarkTheme {
+            get {
+                return ResourceManager.GetString("SettingsPageRadioButtonDarkTheme", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Privacy Statement.
-            /// </summary>
-            public static string SettingsPagePrivacyStatementText {
-                get {
-                    return ResourceManager.GetString("SettingsPagePrivacyStatementText", resourceCulture);
-                }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string SettingsPageRadioButtonLightTheme {
+            get {
+                return ResourceManager.GetString("SettingsPageRadioButtonLightTheme", resourceCulture);
             }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Dark.
-            /// </summary>
-            public static string SettingsPageRadioButtonDarkTheme {
-                get {
-                    return ResourceManager.GetString("SettingsPageRadioButtonDarkTheme", resourceCulture);
-                }
-            }
-    
-            /// <summary>
-            ///   Looks up a localized string similar to Light.
-            /// </summary>
-            public static string SettingsPageRadioButtonLightTheme {
-                get {
-                    return ResourceManager.GetString("SettingsPageRadioButtonLightTheme", resourceCulture);
-                }
-            }
-    
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
@@ -157,13 +140,31 @@ namespace SampleApp.Properties {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
             }
         }
-    
+        
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string ShellSettingsPage {
             get {
                 return ResourceManager.GetString("ShellSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XamlIsland.
+        /// </summary>
+        public static string ShellXamlIslandPage {
+            get {
+                return ResourceManager.GetString("ShellXamlIslandPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XamlIsland.
+        /// </summary>
+        public static string XamlIslandPageTitle {
+            get {
+                return ResourceManager.GetString("XamlIslandPageTitle", resourceCulture);
             }
         }
     }
