@@ -9,16 +9,22 @@
     d:DesignWidth="400">
     <Grid Background="{x:Bind BackgroundColor, Mode=OneWay}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
             <RowDefinition Height="100" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock TextWrapping="Wrap">
             <Run FontWeight="Bold">UWP Xaml Island</Run>
             <LineBreak />
-            <Run>This TextBox is bound to the Data property in WPF Page's ViewModel.</Run>
+            <Run>This sample shows a UWP TextBox in the CustomControlUniversal. This control is embedded in a WindowsXamlHost inside the WPF CustomControl. The TextBox Text (UWP) property is finally bound to the XamlIslandViewModel Text property (WPF).</Run>
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Grid.Row="1">
+            <Run FontWeight="SemiBold">Hierarchy:</Run>
+            <LineBreak />
+            <Run>UWP TextBox / CustomControlUniversal (UWP) / CustomControl (WPF) / XamlIslandPage / XamlIslandViewModel</Run>
         </TextBlock>
         <TextBox
-            Grid.Row="1"            
+            Grid.Row="2"            
             Text="{x:Bind Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </UserControl>
